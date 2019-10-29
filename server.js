@@ -1,6 +1,6 @@
 'use strict';
 
-var port = 8002; // Better flexibility than hardcoding the port
+var port = process.env.PORT || 8001; // Better flexibility than hardcoding the port
 
 var Http = require('http');
 var Express = require('express');
