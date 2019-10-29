@@ -28,13 +28,17 @@ module.exports = {
                 message = "You need to add credit to your account before you can buy shares.";
                 res.status(status).send(message);
             }
-        }else {
+        } else {
             status = 400;
             message = "You have no shares to sell.";
             res.status(status).send(message);
         }
     },
     onSharePriceReceived (req, res, totalPrice, credit) {
+        if (totalPrice === null || totalPrice === undefined) {
+            status = 400;
+            message = "Invalid ticker supplied";
+        } else {
             let provider = dataProvider['put']['200'];
             let data = provider(req, totalPrice, function (err, data) {
                 if (err) {
@@ -42,7 +46,8 @@ module.exports = {
                     return;
                 }
             });
-            res.json(data);
+        }
+        res.json(data);
         res.status(status).send(message);
     }
 };

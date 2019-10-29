@@ -27,6 +27,7 @@ module.exports = {
                     utils.updatePortfolio(assets, tickerValue, newTotalValue, newShareCount);
                 }
             }
+            return global.portfolio;
         }
     }
 };

@@ -22,7 +22,7 @@ module.exports = {
                 credit.value = currentCredit.value + addAmount;  
             }
             global.credit = credit;
-            return credit;
+            return global.credit;
         }
     }
 };

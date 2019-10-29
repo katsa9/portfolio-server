@@ -31,6 +31,7 @@ module.exports = {
             } else {
                 utils.updatePortfolio(assets, tickerValue,pricePaid,sharesBought);
             }
+            return global.portfolio;
         }
     }
 };

@@ -24,7 +24,10 @@ module.exports = {
         utils.getSharePrice(req,res, credit, module.exports.onSharePriceReceived);
     },
     onSharePriceReceived(req, res, totalPrice, credit) {
-        if(totalPrice > credit.value) {
+        if(totalPrice === null || totalPrice === undefined) {
+            status = 400;
+            message = "Invalid ticker supplied";
+        } else if(totalPrice > credit.value) {
             status = 400;
             message = "You have insufficent credit to buy the selected amount of shares.";
         } else {
