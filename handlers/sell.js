@@ -46,8 +46,8 @@ module.exports = {
                     return;
                 }
             });
+            res.json(data);
         }
-        res.json(data);
         res.status(status).send(message);
     }
 };
