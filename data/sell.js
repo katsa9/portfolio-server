@@ -21,10 +21,21 @@ module.exports = {
 
             if (assets) {
                 let currentAsset = assets[tickerValue];
-                if (currentAsset && currentAsset.shareCount >= sharesSold) {
+                if (currentAsset && currentAsset.shareCount > sharesSold) {
                     let newTotalValue = currentAsset.totalValue - priceReceived;
                     let newShareCount = currentAsset.shareCount - sharesSold;
                     utils.updatePortfolio(assets, tickerValue, newTotalValue, newShareCount);
+                } else if (currentAsset && currentAsset.shareCount === sharesSold) {
+                    delete global.portfolio[tickerValue];
+                    if (Object.keys(global.portfolio).length === 0 && global.portfolio.constructor === Object) {
+                        return {
+                            empty: {
+                                ticker: "You have no shares",
+                                totalValue: 0,
+                                shareCount: 0
+                            }
+                        }
+                    }
                 }
             }
             return global.portfolio;

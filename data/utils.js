@@ -3,8 +3,8 @@ module.exports = {
   updatePortfolio: function (assets, tickerValue, assetValue, shareCount) {
     global.portfolio = {
       ...assets,
-      [tickerValue]: {
-        ticker: tickerValue,
+      [tickerValue.toUpperCase()]: {
+        ticker: tickerValue.toUpperCase(),
         totalValue: assetValue,
         shareCount: shareCount
       }

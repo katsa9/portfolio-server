@@ -14,7 +14,7 @@ module.exports = {
     get: {
         200: function (req, res, callback) {
             let assets = global.portfolio;
-            if (assets === undefined || assets === null) {
+            if (assets === undefined || assets === null || (Object.keys(assets).length === 0 && assets.constructor === Object)) {
                 return {
                     empty: {
                         ticker: "You have no shares",
