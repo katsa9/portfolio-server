@@ -16,7 +16,7 @@ module.exports = {
         200: function (req, res, callback) {
             let assets = global.portfolio;
             let sharesSold = req.query.amount;
-            let tickerValue = req.query.ticker;
+            let tickerValue = req.query.ticker.toUpperCase();
             let priceReceived = res;
 
             if (assets) {

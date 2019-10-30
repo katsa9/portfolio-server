@@ -16,7 +16,7 @@ module.exports = {
         let status = 200, message;
         let credit = global.credit;
         let sharesToSell = req.query.amount;
-        let tickerValue = req.query.ticker;
+        let tickerValue = req.query.ticker.toUpperCase();
         let assets = global.portfolio;
 
         if (assets) {
@@ -25,7 +25,7 @@ module.exports = {
                 utils.getSharePrice(req, res, credit, module.exports.onSharePriceReceived);
             } else {
                 status = 400;
-                message = "You need to add credit to your account before you can buy shares.";
+                message = "Invalid ticker provided.";
                 res.status(status).send(message);
             }
         } else {
