@@ -16,14 +16,16 @@ module.exports = {
             let assets = global.portfolio;
             if (assets === undefined || assets === null) {
                 return {
-                    ticker: "You have no shares",
-                    totalValue: 0,
-                    shareCount: 0
+                    empty: {
+                        ticker: "You have no shares",
+                        totalValue: 0,
+                        shareCount: 0
+                    }
                 }
             } else {
                 return assets;
 
-/****START OF CODE TO UPDATE VALUES OF ASSETS BASED ON CURRENT VALUES */
+                /****START OF CODE TO UPDATE VALUES OF ASSETS BASED ON CURRENT VALUES */
 
                 // let updated = Object.values(assets).map(item => module.exports.updateShareValue(item, module.exports.onSharePriceReceived))
                 // global.portfolio = updated;
