@@ -31,7 +31,7 @@ module.exports = {
                     next(err);
                     return;
                 }
-                res.json(data);
+                res.json(added);
             });
         } else { //bad request
             status = 400;
